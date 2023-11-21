@@ -1,0 +1,28 @@
+{# Template Twig pour afficher le journal de bord avec le nom d'utilisateur #}
+<br><br>
+<h1>Journal de bord de l'utilisateur </h1>
+<br>
+{% if nomUtilisateur %}
+    <p>Nom : {{ nomUtilisateur }}</p>
+
+{% else %}
+    <p>Nom : Visiteur</p>
+
+{% endif %}
+
+{% if journalEntries %}
+    <ol>
+        {% for entry in journalEntries %}
+            <li>Adresse IP: {{ entry.ip_address }}</li>
+            <li>Date: {{ entry.date }}</li>
+            <li>Page visitée: {{ entry.page_vistee }}</li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <ol>
+        <li>Adresse IP: 10.20.30.40</li>
+        <li>Date: 2023-11-20</li>
+        <li>Page visitée: À l'affiche</li>
+    </ol>
+{% endif %}
+

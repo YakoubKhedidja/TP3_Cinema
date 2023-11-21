@@ -1,0 +1,18 @@
+{% block content %}
+  <h2>{{ titre }}</h2>
+    <br><br>
+  {% if classRetour is empty %}
+    <div class="{{ erreur }}">{{ erreur }}</div>
+  {% endif %}
+    <br><br>
+  <form method="post" action="admin?entite=utilisateur&action=c">
+    <select name="utilisateur_id" id="utilisateur_id" required>
+      <option value="" disabled selected>Choisir un utilisateur</option>
+      {% for utilisateur in utilisateurs %}
+        <option value="{{ utilisateur.utilisateur_id }}">{{ utilisateur.utilisateur_prenom }} {{ utilisateur.utilisateur_nom }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <button type="submit">Envoyer le courriel</button>
+  </form>
+{% endblock %}
